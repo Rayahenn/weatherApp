@@ -59,10 +59,8 @@ export default {
     getWeather() {
       axios.get("https://api.openweathermap.org/data/2.5/weather?q=" + this.city + "&appid=" + this.apiKey + "&units=metric&lang=pl").then(response => {
         axios.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + response.data.coord.lat + "&lon=" + response.data.coord.lon +  "&appid=" + this.apiKey + "&units=metric&lang=pl").then(responseSecondary => {
-          console.log(responseSecondary);
           this.dailyTemp = responseSecondary.data.daily;
         });
-        console.log(response)
         this.city = null;
         this.humidity = response.data.main.humidity;
         this.windSpeed = response.data.wind.speed;
